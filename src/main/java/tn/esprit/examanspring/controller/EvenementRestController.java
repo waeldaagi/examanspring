@@ -2,6 +2,7 @@ package tn.esprit.examanspring.controller;
 
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.examanspring.entities.Evenement;
+import tn.esprit.examanspring.entities.Utilisateur;
 import tn.esprit.examanspring.service.EvenementInterface;
 
 @RestController
@@ -16,5 +17,10 @@ public class EvenementRestController {
     @PostMapping("/addevent")
     public Evenement addEvenement(@RequestBody Evenement evenement) {
         return evenementInterface.addEvenement(evenement);
+    }
+    
+    @PostMapping("/adduser/{idEvent}")
+    public String addUser(@RequestBody Utilisateur u, @PathVariable Long idEvent) {
+        return evenementInterface.addUser(u, idEvent);
     }
 }
