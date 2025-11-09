@@ -7,6 +7,7 @@ import tn.esprit.examanspring.entities.Utilisateur;
 import tn.esprit.examanspring.entities.Role;
 import tn.esprit.examanspring.repository.EvenementRepository;
 import tn.esprit.examanspring.repository.UtilisateurRepository;
+import java.util.List;
 
 @Service
 public class EvenementService implements EvenementInterface {
@@ -50,5 +51,10 @@ public class EvenementService implements EvenementInterface {
         }
         
         return "Rôle non reconnu";
+    }
+    
+    @Override
+    public List<Evenement> getEventsByResponsable(Long responsableId) {
+        return evenementRepository.findByResponsable_IdU(responsableId);
     }
 }
